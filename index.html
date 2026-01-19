@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云南大学2025河南招生选科专业指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 15px;
+        }
+        
+        .year-tag {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 2px solid #e0e6ef;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-btn:hover {
+            border-color: #2a5298;
+            color: #2a5298;
+        }
+        
+        .filter-btn.active {
+            background-color: #2a5298;
+            color: white;
+            border-color: #2a5298;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
+        
+        .card-id {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            color: #2a5298;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eef2f7;
+        }
+        
+        .major-list {
+            margin-bottom: 20px;
+        }
+        
+        .major-item {
+            margin-bottom: 12px;
+            padding-left: 5px;
+        }
+        
+        .major-name {
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 3px;
+        }
+        
+        .major-direction {
+            font-size: 0.9rem;
+            color: #666;
+            padding-left: 15px;
+        }
+        
+        .key-point {
+            background-color: #f0f7ff;
+            border-left: 4px solid #2a5298;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+        }
+        
+        .key-point h4 {
+            color: #2a5298;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .key-point p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e6ef;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 80%;
+                justify-content: center;
+            }
+        }
+        
+        /* 卡片颜色方案 */
+        .color-1 { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+        .color-2 { background: linear-gradient(135deg, #2c3e50, #4a6491); }
+        .color-3 { background: linear-gradient(135deg, #0f4c75, #3282b8); }
+        .color-4 { background: linear-gradient(135deg, #155263, #2a7886); }
+        .color-5 { background: linear-gradient(135deg, #1a3c40, #2d5d7c); }
+        .color-6 { background: linear-gradient(135deg, #5d3891, #8e44ad); }
+        .color-7 { background: linear-gradient(135deg, #a12568, #d85b7c); }
+        .color-8 { background: linear-gradient(135deg, #b3541e, #e78b38); }
+        .color-9 { background: linear-gradient(135deg, #186049, #2e8b57); }
+        .color-10 { background: linear-gradient(135deg, #2d4059, #4a6fa5); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>云南大学2025河南招生选科专业指南</h1>
+            <p class="subtitle">根据各选科组合覆盖的核心专业，适配云大不同学院优势方向，为河南考生提供选科参考</p>
+            <div class="year-tag">2025年招生计划参考</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th-large"></i> 全部组合
+            </button>
+            <button class="filter-btn" data-filter="physics">
+                <i class="fas fa-atom"></i> 物理相关
+            </button>
+            <button class="filter-btn" data-filter="history">
+                <i class="fas fa-scroll"></i> 历史相关
+            </button>
+            <button class="filter-btn" data-filter="medicine">
+                <i class="fas fa-heartbeat"></i> 医学类
+            </button>
+            <button class="filter-btn" data-filter="engineering">
+                <i class="fas fa-cogs"></i> 工学类
+            </button>
+        </div>
+        
+        <div class="card-container" id="cardContainer">
+            <!-- 卡片将通过JavaScript动态生成 -->
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color color-1"></div>
+                <span>物理+化学+生物</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-2"></div>
+                <span>物理+化学+政治</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-3"></div>
+                <span>物理+化学+地理</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-4"></div>
+                <span>物理+生物+地理</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-5"></div>
+                <span>物理+政治+地理</span>
+            </div>
+        </div>
+        
+        <footer>
+            <p>注：以上信息基于云南大学2025年河南招生计划参考，具体招生要求请以当年官方招生章程为准</p>
+            <p>© 2025 云南大学招生信息参考 | 数据整理自招生计划</p>
+        </footer>
+    </div>
+
+    <script>
+        // 数据来自10张图片
+        const cardsData = [
+            {
+                id: 1,
+                title: "物理+化学+生物",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["理学类", "工学类", "农学类"],
+                majors: [
+                    {name: "临床医学", direction: "云大医学院核心专业，物化生必选"},
+                    {name: "药学", direction: "含临床药学方向，需化学+生物"},
+                    {name: "生物科学", direction: "国家一流专业，含生态学方向"},
+                    {name: "生物技术", direction: "微生物工程/生物制药方向"},
+                    {name: "化学", direction: "省级一流专业，含分析化学方向"},
+                    {name: "化学工程与工艺", direction: "精细化工/能源化工方向"},
+                    {name: "环境工程", direction: "生态修复/污染控制方向"},
+                    {name: "食品科学与工程", direction: "食品安全/营养方向"},
+                    {name: "生态学", direction: "国家重点学科，生态保护方向"},
+                    {name: "园艺", direction: "观赏园艺/设施农业方向"}
+                ],
+                keyPoint: "云大医学院王牌专业必选，适配理工农医全赛道",
+                tags: ["physics", "medicine", "engineering"],
+                colorClass: "color-1"
+            },
+            {
+                id: 2,
+                title: "物理+化学+政治",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["军警公安技术类", "政治相关类"],
+                majors: [
+                    {name: "计算机科学与技术", direction: "人工智能/大数据方向"},
+                    {name: "电子信息工程", direction: "通信工程/芯片设计方向"},
+                    {name: "自动化", direction: "智能控制/机器人方向"},
+                    {name: "航空航天工程", direction: "空天力学/飞行器设计方向"},
+                    {name: "信息安全", direction: "网络攻防/数据安全方向，需政治"},
+                    {name: "公安技术", direction: "刑事科学技术方向，需政治"},
+                    {name: "马克思主义理论", direction: "思政教育/党建方向"},
+                    {name: "政治学与行政学", direction: "地方治理/公共政策方向"}
+                ],
+                keyPoint: "适配云大信息学院、政府管理学院核心专业，满足军警类隐性要求",
+                tags: ["physics", "engineering"],
+                colorClass: "color-2"
+            },
+            {
+                id: 3,
+                title: "物理+化学+地理",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["主流工学类"],
+                majors: [
+                    {name: "土木工程", direction: "建筑工程/桥梁隧道方向"},
+                    {name: "机械设计制造及其自动化", direction: "智能制造/装备工程方向"},
+                    {name: "地理信息科学", direction: "卫星遥感/智慧城市方向，云大省级重点"},
+                    {name: "人文地理与城乡规划", direction: "乡村振兴/国土空间规划方向"},
+                    {name: "测绘工程", direction: "卫星定位/工程测量方向"},
+                    {name: "地质学", direction: "矿产勘查/地质灾害防治方向"},
+                    {name: "大气科学", direction: "气候预测/环境气象方向"},
+                    {name: "环境科学", direction: "生态监测/碳中和方向"}
+                ],
+                keyPoint: "适配云大地球科学学院、资源环境与地球科学学院优势专业",
+                tags: ["physics", "engineering"],
+                colorClass: "color-3"
+            },
+            {
+                id: 4,
+                title: "物理+生物+地理",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["部分医学相关"],
+                majors: [
+                    {name: "康复治疗学", direction: "神经康复/运动康复方向"},
+                    {name: "心理学", direction: "认知神经科学方向"},
+                    {name: "地理信息科学", direction: "同物化地方向，部分院校接受生地组合"},
+                    {name: "测绘工程", direction: "同物化地方向，部分院校接受生地组合"},
+                    {name: "生态学", direction: "同物化地方向，部分院校接受生地组合"},
+                    {name: "风景园林", direction: "景观设计/生态修复方向"},
+                    {name: "计算机科学与技术", direction: "部分方向仅需物理"},
+                    {name: "机械工程", direction: "智能制造方向，仅需物理"}
+                ],
+                keyPoint: "云大仅部分专业接受该组合，需提前核对招生章程",
+                tags: ["physics", "medicine"],
+                colorClass: "color-4"
+            },
+            {
+                id: 5,
+                title: "物理+政治+地理",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["文理兼收类"],
+                majors: [
+                    {name: "经济学", direction: "国民经济/区域经济方向"},
+                    {name: "金融学", direction: "金融科技/风险管理方向"},
+                    {name: "工商管理", direction: "战略管理/市场营销方向"},
+                    {name: "治安学", direction: "同物生政方向，需政治"},
+                    {name: "侦查学", direction: "刑事侦查/禁毒方向，需政治"},
+                    {name: "土木工程", direction: "部分方向仅需物理"},
+                    {name: "交通运输", direction: "智能交通方向，仅需物理"},
+                    {name: "地理科学类", direction: "地理科学（自然地理/人文地理方向）"}
+                ],
+                keyPoint: "适配云大经济学院、政府管理学院、物理保底工科专业",
+                tags: ["physics"],
+                colorClass: "color-5"
+            },
+            {
+                id: 6,
+                title: "历史+政治+地理",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["人文类", "社科类", "管理类", "教育类"],
+                majors: [
+                    {name: "历史学", direction: "中国史/世界史方向，云大国家级特色专业"},
+                    {name: "考古学", direction: "边疆考古/文化遗产方向，国家级重点"},
+                    {name: "汉语言文学", direction: "古代文学/现当代文学方向"},
+                    {name: "新闻学", direction: "数字媒体/国际传播方向"},
+                    {name: "法学", direction: "民商法/国际法方向，省级一流专业"},
+                    {name: "政治学与行政学", direction: "边疆治理/民族政治方向"},
+                    {name: "社会学", direction: "民族社会学/社会政策方向"},
+                    {name: "公共管理", direction: "行政管理/应急管理方向"},
+                    {name: "人力资源管理", direction: "组织行为/人才测评方向"},
+                    {name: "教育学", direction: "基础教育/教育管理方向"}
+                ],
+                keyPoint: "云大人文社科核心专业必选，竞争激烈",
+                tags: ["history"],
+                colorClass: "color-6"
+            },
+            {
+                id: 7,
+                title: "历史+政治+生物",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["基础人文社科"],
+                majors: [
+                    {name: "法学、政治学、汉语言文学", direction: "同史政地方向"},
+                    {name: "护理学", direction: "同物生政方向，接受历史类考生"},
+                    {name: "应用心理学", direction: "同物生政方向，接受历史类考生"},
+                    {name: "知识产权", direction: "法学+管理学交叉方向"},
+                    {name: "农林经济管理", direction: "乡村振兴/农业政策方向"}
+                ],
+                keyPoint: "云大仅部分医学边缘、管理专业接受该组合，选择面较窄",
+                tags: ["history", "medicine"],
+                colorClass: "color-7"
+            },
+            {
+                id: 8,
+                title: "历史+化学+生物",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["核心文科", "轻工类", "医药护理类"],
+                majors: [
+                    {name: "汉语言文学、法学、新闻学", direction: "同政地方向"},
+                    {name: "护理学", direction: "同物生政方向，接受历史类考生"},
+                    {name: "药学", direction: "同物化生方向，接受历史类考生"},
+                    {name: "康复治疗学", direction: "同物生地方向，接受历史类考生"},
+                    {name: "食品科学与工程", direction: "同物化生方向，接受历史类考生"}
+                ],
+                keyPoint: "云大医学类专业对历史类考生开放较少，需关注当年招生计划",
+                tags: ["history", "medicine"],
+                colorClass: "color-8"
+            },
+            {
+                id: 9,
+                title: "历史+地理+化学/生物",
+                subtitle: "覆盖核心专业（云大2025河南招生）",
+                categories: ["地理类", "历史类", "不限选科文科"],
+                majors: [
+                    {name: "人文地理与城乡规划", direction: "同物化地方向，接受历史类考生"},
+                    {name: "旅游管理", direction: "文旅融合/遗产旅游方向"},
+                    {name: "历史学、考古学", direction: "同政史地方向，部分方向需化学"},
+                    {name: "汉语言文学、法学", direction: "同政史地方向"}
+                ],
+                keyPoint: "云大仅小众专业接受该组合，适合地理/历史深度爱好者",
+                tags: ["history"],
+                colorClass: "color-9"
+            },
+            {
+                id: 10,
+                title: "物理+生物+政治",
+                subtitle: "适配云大河南招生专业",
+                categories: ["医学相关", "生物/心理", "工科管理", "政治相关", "文理交叉"],
+                majors: [
+                    {name: "护理学、中医学、康复治疗学", direction: "医学相关"},
+                    {name: "生物工程、应用心理学", direction: "生物/心理"},
+                    {name: "工程管理、信息管理与信息系统", direction: "工科管理"},
+                    {name: "公安学、法学、马克思主义理论", direction: "政治相关"},
+                    {name: "经济学、金融学、工商管理", direction: "文理交叉"}
+                ],
+                keyPoint: "避化学，适配化学薄弱考生；无缘云大临床医学等物化生刚需专业；政治助力军警/思政类，物理保底工科管理",
+                tags: ["physics", "medicine"],
+                colorClass: "color-10"
+            }
+        ];
+
+        // 渲染卡片
+        function renderCards(filter = "all") {
+            const container = document.getElementById("cardContainer");
+            container.innerHTML = "";
+            
+            const filteredCards = filter === "all" 
+                ? cardsData 
+                : cardsData.filter(card => card.tags.includes(filter));
+            
+            filteredCards.forEach(card => {
+                const cardElement = document.createElement("div");
+                cardElement.className = "card";
+                cardElement.setAttribute("data-tags", card.tags.join(","));
+                
+                // 构建专业列表HTML
+                let majorsHTML = "";
+                card.majors.forEach(major => {
+                    majorsHTML += `
+                    <div class="major-item">
+                        <div class="major-name">${major.name}</div>
+                        <div class="major-direction">${major.direction}</div>
+                    </div>
+                    `;
+                });
+                
+                // 构建分类HTML
+                let categoriesHTML = "";
+                if (card.categories && card.categories.length > 0) {
+                    categoriesHTML = `<div style="margin-bottom: 10px; font-size: 0.9rem; opacity: 0.8;">
+                        <i class="fas fa-tags"></i> ${card.categories.join(" · ")}
+                    </div>`;
+                }
+                
+                cardElement.innerHTML = `
+                    <div class="card-header ${card.colorClass}">
+                        <div class="card-id">${card.id.toString().padStart(2, '0')}/10</div>
+                        <div class="card-title">${card.title}</div>
+                        <div class="card-subtitle">${card.subtitle}</div>
+                        ${categoriesHTML}
+                    </div>
+                    <div class="card-content">
+                        <h3><i class="fas fa-graduation-cap"></i> 覆盖专业方向</h3>
+                        <div class="major-list">
+                            ${majorsHTML}
+                        </div>
+                        <div class="key-point">
+                            <h4><i class="fas fa-key"></i> 关键点</h4>
+                            <p>${card.keyPoint}</p>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(cardElement);
+            });
+        }
+
+        // 初始化页面
+        document.addEventListener("DOMContentLoaded", () => {
+            renderCards();
+            
+            // 为筛选按钮添加事件监听器
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            filterButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    // 移除所有按钮的active类
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    // 为当前按钮添加active类
+                    button.classList.add("active");
+                    // 获取筛选条件并重新渲染卡片
+                    const filter = button.getAttribute("data-filter");
+                    renderCards(filter);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
